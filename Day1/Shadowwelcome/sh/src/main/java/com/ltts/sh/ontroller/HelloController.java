@@ -28,8 +28,20 @@ public class HelloController {
 	public ModelAndView viewHomePage() {
 		return new ModelAndView("index");
 	}
+	@RequestMapping("/ater")
+	public ModelAndView viePage() {
+		return new ModelAndView("afthernoon");
+	}
+	@RequestMapping("/even")
+	public ModelAndView vieevenPage() {
+		return new ModelAndView("evening");
+	}
+	@RequestMapping("/night")
+	public ModelAndView vienightPage() {
+		return new ModelAndView("night");
+	}
 	@RequestMapping("/message")
-	 public String getCurrentTimeUsing()
+	 public ModelAndView  getCurrentTimeUsing()
 	 {
 	Calendar cal = Calendar.getInstance();
 	Date date = new Date();
@@ -43,14 +55,21 @@ public class HelloController {
     System.out.println(hour);
     System.out.println(month);
     if(hour>=1 && hour<12)
+    {
       mess = "Good Morning!!";
-    else if(hour>=12 && hour<16)
-      mess = "Good Afternoon!!";
-    else if(hour>=16 && hour<21)
-      mess = "Good Evening!!";
-    else if(hour>=21 && hour<24)
-      mess= "Good Night!!";
-   message= mess+" Vishal ! Welcome to First Project Activity Current Time is : "+formattedDate;
+      System.out.println(hour);
+      return new ModelAndView("index");
+    }else if(hour>=12 && hour<16)
+    { mess = "Good Afternoon!!";
+    return new ModelAndView("afthernoon");
+    }else if(hour>=16 && hour<21)
+    { mess = "Good Evening!!";
+    return new ModelAndView("evening");
+    } else if(hour>=21 && hour<24)
+    { mess= "Good Night!!";
+    return new ModelAndView("night");
+    }  
+    message= mess+" Vishal ! Welcome to First Project Activity Current Time is : "+formattedDate;
 	/*
 	 * if( hour == 5 ) { if( month > 2 && month < 9 ) { System.out.println(
 	 * "Good morning!" ); mess="Good morning!"+hour; } else { System.out.println(
@@ -64,7 +83,7 @@ public class HelloController {
 	 * mess="Good evening!"+hour; } else { System.out.println( "Good night!" );
 	 * mess="Good night!"+hour; }
 	 */
-	return message;
+	return new ModelAndView("index");
 }
 	
 	
